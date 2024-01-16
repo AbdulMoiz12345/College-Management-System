@@ -44,7 +44,7 @@ const Studentreview = () => {
       <Header />
       <StudentSideBar />
       <div className="pdf-list-container">
-        <h1 className='h1'>Uploaded Content</h1>
+      <h1 className="dashboard-title" style={{ '--line-width': '370px',marginLeft:"600px" }}>Uploaded Content</h1>
         <hr />
         <ul className="pdf-list">
           {pdfList.map((pdf) => (
@@ -53,7 +53,7 @@ const Studentreview = () => {
               Uploaded on: {pdf.date ? new Date(pdf.date).toLocaleString() : 'Date Not Available'}
             </div>
             <div style={{ color: 'black', display: 'flex',marginLeft:'70px'}}>
-              <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px'}} />
+              <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px',color:'red'}} />
           
               <span>{pdf.file_name}</span>&nbsp;&nbsp;
               <p style={{ color: 'gray', margin: 0, fontWeight: 'lighter' }}>PDF Document</p>

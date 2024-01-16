@@ -6,9 +6,9 @@ import TeacherSideBar from './TeacherSideBar';
 import Header from '../Header';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf,faTrash } from '@fortawesome/free-solid-svg-icons';
 const Giveassignment = () => {
-  const { courseid, coursename } = useContext(idcontext);
+  const { courseid, coursename,AssignmentID,setAssignmentID } = useContext(idcontext);
   const [pdfList, setPdfList] = useState([]);
   const [file, setFile] = useState(null);
   const [formName, setFormName] = useState('');
@@ -17,7 +17,7 @@ const Giveassignment = () => {
   const [deadlinePassed, setDeadlinePassed] = useState([]);
   const navigate = useNavigate();
   const { classid, setclassid } = useContext(idcontext);
-
+  
   useEffect(() => {
     axios
       .get(`http://localhost:8000/pdf-listass?courseid=${courseid}&classid=${classid}`)
@@ -86,12 +86,27 @@ const Giveassignment = () => {
       });
   };
 
+  const handleDeleteAssignment = async (AssignmentID) => {
+    try {
+      const response = await axios.delete(`http://localhost:8000/delete-assignment/${AssignmentID}`);
+      console.log(response.data);
+
+      // Update the state to reflect the changes
+      setPdfList((prevPdfList) => prevPdfList.filter((pdf) => pdf.AssignmentID !== AssignmentID));
+    } catch (error) {
+      console.error('Error deleting assignment:', error);
+    }
+  };
   const handleDownloadSubmission = (AssignmentID) => {
     // Add logic for downloading submission
+    setAssignmentID(AssignmentID)
+    localStorage.setItem('assignmentid',AssignmentID)
     console.log(`Downloading submission for assignment ID: ${AssignmentID}`);
     navigate('/teacher/assignmentchecking');
+    console.log(AssignmentID)
   };
 
+  
   return (
     <>
      <Header />
@@ -112,11 +127,12 @@ const Giveassignment = () => {
         </div>
       </div>
     <div className="pdf-list-container">
-      <h1 className="h1">Uploaded Content</h1>
+    <h1 className="dashboard-title" style={{ '--line-width': '370px',marginLeft:"600px" }}>Uploaded Content</h1>
       <hr />
       <ul className="pdf-list">
         {pdfList.map((pdf) => (
-          <React.Fragment key={pdf.id}>
+          <div style={{display:'flex'}}>
+            <React.Fragment key={pdf.id}>
             <div className="assignment-details">
               <div className="date">
                 Uploaded on: {pdf.date ? new Date(pdf.date).toLocaleString() : 'N/A'}
@@ -124,13 +140,13 @@ const Giveassignment = () => {
               </div>
               <div className="pdf-list-item" onClick={() => viewPdf(pdf.AssignmentID)} >
                 <div style={{ color: 'black', display: 'flex',marginLeft:'70px' }}>
-                <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px'}} />
+                <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px',color:'red'}} />
                    <span>{pdf.file_name}</span>&nbsp;&nbsp;
                   <p style={{ color: 'gray', margin: 0, fontWeight: 'lighter' }}>PDF Document</p>
                 </div>
               </div>
             </div>
-            <div className="button-container">
+            <div className="button-container" style={{marginTop:'60px'}}>
               {deadlinePassed.includes(pdf.AssignmentID) && (
                 <>
                 <p>Deadline has passed</p>
@@ -142,6 +158,12 @@ const Giveassignment = () => {
               )}
             </div>
           </React.Fragment>
+          <div>
+          <button className="delete-button" onClick={() => handleDeleteAssignment(pdf.AssignmentID)} style={{marginTop:'80px',marginLeft:'200px'}}>
+              <FontAwesomeIcon icon={faTrash} />
+             </button>
+          </div>
+          </div>
         ))}
       </ul>
     </div>

@@ -62,7 +62,7 @@
 }
 
 .main-nav li:hover {
-  background: #333;
+  background:green;
 }
 
 .main-nav a {
@@ -252,6 +252,7 @@
 
 .profile-info {
   margin-top: 20px;
+  display: flex;
 }
 
 .profile-info p {
@@ -321,11 +322,17 @@
 .attendance-progress {
   height: 100%;
   background-color: #4caf50;
-  text-align: center;
   line-height: 20px;
   color: #fff;
-  transition: width 0.5s; /* Add smooth transition effect */
 }
+
+.attendance-progress span {
+  position: fixed;
+  left: 40%;
+  color: #fff;
+  line-height: 20px;
+}
+
 .courses-container1 {
   width: 1500px;
   display: flex;
@@ -349,25 +356,485 @@
   transform: scale(1.05);
   cursor: pointer;
 }
-.courses-container3 {
+
+
+.dashboard{
   display: flex;
-  flex-direction: column;
-  margin-top: 130px;
-  margin-left: 400px;
-  width: 600px;
+  justify-content: space-around;
+  margin-left: 300px; /* Add left margin */
+  margin-top: 30px;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.course-item {
-  padding: 15px;
-  border: 1px solid #ddd;
+/* Add this to Sidebar.css or create a new CSS file */
+
+/* Content Main */
+.content_main {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* File Upload Container */
+/* File Upload Container */
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Choose File Input */
+.file-upload-container input[type="file"] {
+  margin: 10px 0;
+  padding: 15px; /* Increase padding to make it larger */
+  background-color: #333; /* Darker background color */
+  color: white; /* Text color */
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Upload Button */
+.upload-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 410px;
+}
+
+.upload-button:hover {
+  background-color: #45a049;
+}
+
+/* PDF List Container */
+.pdf-list-container {
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+/* PDF List */
+.pdf-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pdf-list-item {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pdf-list-item:hover {
   background-color: #f9f9f9;
 }
 
-.course-item .present {
-  color: green !important; /* Use !important to override conflicting styles */
+.date {
+  color: #777;
+  font-size: 24px;
 }
 
-.course-item .not-present {
-  color: red !important; /* Use !important to override conflicting styles */
+/* Add this CSS to your existing styles or create a new stylesheet */
+
+.photo-container {
+  margin-top: 20px;
+  height: 100px;
+  width: 200px;
+}
+.photo-container p{
+  margin-left: 550px;
+  margin-top: 100px;
+}
+
+.profile-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 500px;
+  border:2px solid black
+}
+
+.upload-photo-container {
+  margin-top: 250px;
+  margin-left: 330px;
+}
+
+/* Optional: Style the file input to match your design */
+#photoInput {
+  display: none;
+  /* Hide the default file input */
+}
+
+.upload-photo-container label {
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.upload-photo-container label:hover {
+  background-color: #2980b9;
+}
+/* AttendancePage.css */
+
+.attendance-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 40px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 280px;
+}
+
+.attendance-container p {
+  margin: 15px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.attendance-info {
+  margin-top: 20px;
+}
+
+.attendance-bar {
+  background-color: #eee;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.attendance-progress {
+  height: 100%;
+  background-color: #4caf50;
+  line-height: 20px;
+  color: #fff;
+}
+
+.attendance-progress span {
+  right: 132px;
+  color: #fff;
+  line-height: 20px;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+  .attendance-container {
+    margin: 10px 0;
+  }
+}
+/* Attendencedetails.css */
+
+/* Container styling */
+.courses-container3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 900px;
+  margin-left: 400px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
+/* Course item styling */
+.course-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  height: 150px;
+  margin-top: 0px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling for present and not-present status */
+.present {
+  color: #4caf50; /* Green color for present */
+}
+
+.not-present {
+  color: #f44336; /* Red color for not present */
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+  .courses-container3 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ComplainPage.css */
+
+.complain-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 800px;
+  margin-left: 300px;
+}
+
+.complain-container h2 {
+  color: #333;
+}
+
+.complain-container label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.complain-container input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+.complaint{
+  height: 500px;
+}
+
+.complain-container button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.complain-container button:hover {
+  background-color: #45a049;
+}
+/* Add this CSS to your stylesheets or components */
+.complaint-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-left: 300px;
+  margin-right: 60px;
+  height: 600px;
+}
+.complaint-card strong{
+  font-size: 25px;
+  color: #333;
+}
+.complaint-card p{
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #333;
+}
+.complaint-card h2 {
+  color: #333;
+  font-size: 25px;
+  margin-bottom: 40px;
+}
+
+.complaint-card p {
+  color: #555;
+}
+
+.complaint-card button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.complaint-card button:hover {
+  background-color: #45a049;
+}
+
+/* Add this to your CSS file or style tag in your component */
+
+.complaint-list-container {
+  width: 1000px;
+ margin-top: 60px;
+  margin-left: 300px;
+}
+.complaint-list-container h2{
+  font-size: 30px;
+  margin-bottom: 80px;
+}
+.complaint-list {
+  list-style: none;
+  padding: 0;
+}
+
+.complaint-item {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.complaint-item:hover {
+  background-color: #f0f0f0;
+}
+
+.complaint-item div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.complaint-item strong {
+  margin-right: 5px;
+  color: #333;
+}
+.complaint-badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.complaints-link {
+  position: relative;
+  overflow: visible; /* Ensure the badge is visible even if it overflows the container */
+}
+
+.sidebar {
+  width: 400px;
+  background-color: #eee;
+  float: left;
+}
+
+/* Form styles */
+.quiz-form {
+  
+  padding: 20px;
+  display: flex;
+}
+
+.quiz-input {
+  margin-bottom: 30px;
+}
+
+.input-field {
+  width: 400px;
+ 
+  height: 60px;
+  margin-left: 0px;
+  margin-right: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+.pol {
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+  margin-right: 300px;
+}
+
+.pol{
+  background-color: #e0e0e0;
+}
+
+.pol{
+  color: #333;
+  font-weight: bold;
+}
+
+/* Style for file upload container */
+.file-upload-container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Style for file input */
+.file-upload-container1 input[type="file"] {
+  margin-bottom: 10px;
+  /* Add your desired styles */
+}
+
+/* Style for text input */
+.file-upload-container1 input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  /* Add your desired styles */
+}
+
+/* Style for upload button container */
+.upload-button-container1 {
+  text-align: center;
+  
+}
+
+/* Style for upload button */
+.upload-button1 {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* Add your desired styles */
+}
+
+/* Hover effect for upload button */
+.upload-button1:hover {
+  background-color: #45a049;
 }

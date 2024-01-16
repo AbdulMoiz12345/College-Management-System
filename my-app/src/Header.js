@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { useNavigate } from 'react-router-dom'; // Change the import to useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const navigate = useNavigate(); // Use useNavigate instead of calling Navigate()
+  const navigate = useNavigate();
 
   const [currentTime, setCurrentTime] = useState('');
 
@@ -23,20 +23,17 @@ const Header = () => {
   }, []);
 
   const logoutHandler = () => {
-    navigate('/'); // Use navigate to go to the specified route
-  };
-
-  const headingStyles = {
-    color: 'blue',
-    fontSize: '24px',
-    fontFamily: 'Arial',
-    fontWeight: 'bold',
+    navigate('/');
   };
 
   return (
     <div className="header">
-      <div className="time">{currentTime}</div>
-      <h1 style={headingStyles}>NUST</h1>
+      <div className="header-left">
+        <h1 className="logo">NUST</h1>
+      </div>
+      <div className="header-center">
+        <div className="time">{currentTime}</div>
+      </div>
       <div className="header-right">
         <button className="logout" onClick={logoutHandler}>
           LOG OUT

@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import "./App.css"
+import image4 from 'C:/db_project_final/my-app/src/images/6pic.png';
 
 const Homepage = () => {
   const photoUrls = [
@@ -12,7 +13,7 @@ const Homepage = () => {
     'https://thoughtsfromthehorizon.files.wordpress.com/2014/10/top-of-the-mountain.jpg' // Add more image URLs as needed
   ];
   const text = [
-    'Welcome to Moiz and sons college',
+    'Welcome to Our college',
     'where we teach innovation',
     'And reach new heights',
   ];
@@ -45,8 +46,10 @@ const Homepage = () => {
   return (
     <>
       <nav className="navbar">
-        <div className="left-section">
-          <a href="/">School Logo</a>
+        <div style={{width:'300px',display:'flex',textAlign:'center'}}>
+        <div className="left-section" style={{ backgroundImage: `url(${image4})` }}>
+        </div>
+        <div style={{marginLeft:'10px',marginTop:'15px'}}><h2>Our College</h2></div>
         </div>
         <div className="right-section">
           <a href="/">Home</a>

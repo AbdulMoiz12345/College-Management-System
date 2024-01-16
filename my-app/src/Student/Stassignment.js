@@ -38,7 +38,7 @@ const Stassignment = () => {
     <>
     <Header />
     <StudentSideBar/>
-    <h1 className='heading'>Assignment</h1>
+    <h1 className="dashboard-title" style={{ '--line-width': '280px',fontSize:'46px' }}>Assignment</h1>
     <hr/>
 
     <div className="courses-container">
@@ -46,13 +46,14 @@ const Stassignment = () => {
         (course) =>
           course && (
             <StudentCoursecard
-              key={course.CourseID}
-              id={course.CourseID}
-              ClassID={course.ClassID}
-              name={course.CourseName}
-              description={course.CourseDesc}
-              onClick={() => handleCourseClick(course.CourseID, course.ClassID)}
-            />
+            key={course.CourseID}
+            id={course.CourseID}
+            ClassID={course.ClassID}
+            ClassName={course.ClassName}
+            name={course.CourseName}
+            description={course.CourseDesc}
+            onClick={() => handleCourseClick(course.CourseID, course.ClassID)}
+          />
           )
       )}
     </div>

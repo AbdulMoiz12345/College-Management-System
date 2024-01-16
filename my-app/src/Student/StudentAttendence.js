@@ -39,16 +39,16 @@ const StudentAttendence = () => {
     <>
       <Header />
       <StudentSideBar />
-    <h1 className='heading'>Your Attendence</h1>
+      <h1 className="dashboard-title" style={{ '--line-width': '390px',fontSize:'46px' }}>Your Attendance</h1>
     <hr/>
       <div className='courses-container1'>
         {coursesData.map((course) => (
           <div className='courses-container2'key={course.course_id} onClick={() => handleAttendanceClick(course.course_id, course.class_id)}>
             <AttendancePage
               course_id={course.course_id}
-              course_name={course.course_id}
+              course_name={course.coursename}
               class_id={course.class_id}
-              class_name={course.class_id}
+              class_name={course.ClassName}
               present_days={course.present_count}
               total_days={course.total_days}
             />

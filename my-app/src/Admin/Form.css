@@ -1,0 +1,175 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 1.1rem;
+}
+
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.error {
+  width: 100%;
+  margin: -0.6rem 0 0.7rem 0;
+  color: red;
+  font-weight: 800;
+  font-size: 0.8rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+label {
+  font-size: 1rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+h1,
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 4% 4% 4% 20%;
+}
+
+.error-alert {
+  width: 100%;
+  padding: 1rem;
+  margin: 5px 0;
+  background-color: rgb(255, 179, 179);
+  color: red;
+  font-weight: 800;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.container label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.container button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #45a049;
+}
+
+.container p {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Add your existing styles for Header and AdminSideBar components here */
+/* Admin.css */
+
+.dashboard {
+  margin-left: 300px;
+}
+.dashboard-title {
+  position: relative;
+  font-size: 40px;
+  margin-bottom: 60px; /* Adjusted margin for better visibility */
+  margin-top: 60px;
+  margin-left: 900px;
+  overflow: hidden; /* Ensures the overflow is hidden */
+}
+
+.dashboard-title::after {
+  content: ' ';
+  position: absolute;
+  left: -20px; /* Adjusted initial position to start a little left */
+  bottom: 0;
+  width: var(--line-width, 100%);
+  height: 3px;
+  background-color: black; /* Change the color to your preference */
+  transform: scaleX(0);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Adjusted transition for smoother appearance */
+  animation: revealText 1s forwards; /* Animation to reveal text */
+}
+
+@keyframes revealText {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+.all-students-container {
+  margin: 20px;
+  margin-left: 400px;
+  margin-right: 60px;
+}
+
+.all-students-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.all-students-container th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.all-students-container th {
+  background-color: #f2f2f2;
+}
+
+.all-students-container input {
+  margin-bottom: 10px;
+}

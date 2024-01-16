@@ -8,7 +8,7 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import StudentSideBar from './StudentSideBar';
 
 const Stgiveassignment = () => {
-  const { courseid, coursename } = useContext(idcontext);
+  const { courseid, coursename,stid } = useContext(idcontext);
   const [pdfList, setPdfList] = useState([]);
   const [file, setFile] = useState(null);
   const [formName, setFormName] = useState('');
@@ -58,12 +58,12 @@ const Stgiveassignment = () => {
       formData.append('file', file);
       formData.append('formName', formName);
       formData.append('AssignmentID', AssignmentID);
-
+      formData.append('student_id', stid);
       const currentDate = new Date();
       const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
       formData.append('date', formattedDate);
       const response = await axios.post('http://localhost:8000/submitass', formData);
-
+      alert('Assignment Submitted')
       console.log(response.data);
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -88,7 +88,7 @@ const Stgiveassignment = () => {
     <>
       <Header />
       <StudentSideBar />
-      <h1 className='heading'>Submit Assignment</h1>
+      <h1 className="dashboard-title" style={{ '--line-width': '450px',fontSize:'46px' }}>Submit Assignment</h1>
       <hr />
       <div className="pdf-list-container">
         {pdfList.length === 0 ? (
@@ -99,12 +99,12 @@ const Stgiveassignment = () => {
               <React.Fragment key={pdf.id}>
                 <div className="assignment-details">
                   <div className="date">
-                    Uploaded on: {pdf.date ? new Date(pdf.date).toLocaleString() : 'N/A'}
+                    Uploaded on: {pdf.date ? new Date(pdf.date).toLocaleString() : 'N/A'} ||
                     Deadline: {pdf.deadline_date ? new Date(pdf.deadline_date).toLocaleString() : 'N/A'}
                   </div>
                   <div className="pdf-list-item" onClick={() => viewPdf(pdf.AssignmentID)}>
                     <div style={{ color: 'black', display: 'flex', marginLeft: '70px' }}>
-                      <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px' }} />
+                      <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px',color:'red' }} />
                       <span>{pdf.file_name}</span>&nbsp;&nbsp;
                       <p style={{ color: 'gray', margin: 0, fontWeight: 'lighter' }}>PDF Document</p>
                     </div>

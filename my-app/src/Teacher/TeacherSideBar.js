@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Sidebar.css'
-
+import image4 from 'C:/db_project_final/my-app/src/images/6pic.png';
 const TeacherSideBar = () => {
     return (
         <header class="sidebar-header" role="banner">
-            <h1 class="logo">
-                <a>Hello <span>TEACHER</span></a>
-            </h1>
+        <div style={{width:'200px',display:'flex',textAlign:'center',marginLeft:'60px',marginBottom:'30px'}}>
+        <div className="left-section" style={{ backgroundImage: `url(${image4})` }}>
+        </div>
+        </div>
             <div class="nav-wrap">
                 <nav class="main-nav" role="navigation">
                     <ul class="unstyled list-hover-slide">
@@ -16,6 +17,8 @@ const TeacherSideBar = () => {
                         <li><Link to="/teacher/view"><a>VIEW COURSES</a></Link></li>
                         <li><Link to="/teacher/attendence"><a>ADD ATTENDANCE</a></Link></li>
                         <li><Link to="/teacher/assignment"><a>Give Assignment</a></Link></li>
+                        <li><Link to="/teacher/updateattendence"><a>Update Attendence</a></Link></li>
+                        <li><Link to="/teacher/quiz"><a>Give Quiz</a></Link></li>
                     </ul>
                 </nav>
             </div>

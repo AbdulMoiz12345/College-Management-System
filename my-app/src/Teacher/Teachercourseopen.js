@@ -5,7 +5,7 @@ import './Sidebar.css';
 import TeacherSideBar from './TeacherSideBar';
 import Header from '../Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf,faTrash } from '@fortawesome/free-solid-svg-icons';
 const Teachercourseopen = () => {
   const { courseid, coursename } = useContext(idcontext);
   const [pdfList, setPdfList] = useState([]);
@@ -60,7 +60,16 @@ const Teachercourseopen = () => {
       console.error('Error uploading file:', error);
     }
   };
-  
+  const handleDelete = async (fileId) => {
+    try {
+      const response = await axios.delete(`http://localhost:8000/pdf-delete/${fileId}`);
+      console.log(response.data);
+      // Remove the deleted file from the state
+      setPdfList((prevPdfList) => prevPdfList.filter(pdf => pdf.file_id !== fileId));
+    } catch (error) {
+      console.error('Error deleting file:', error);
+    }
+  };
 
   const viewPdf = (fileId) => {
     // Fetch the PDF content as arraybuffer
@@ -98,20 +107,28 @@ const Teachercourseopen = () => {
         </div>
       </div>
       <div className="pdf-list-container">
-  <h1 className='h1'>Uploaded Content</h1>
+      <h1 className="dashboard-title" style={{ '--line-width': '370px',marginLeft:"600px" }}>Uploaded Content</h1>
   <hr/>
   <ul className="pdf-list">
     {pdfList.map((pdf) => (
-      <li key={pdf.id} className="pdf-list-item" onClick={() => viewPdf(pdf.file_id)}>
+      <div style={{display:'flex'}}>
+<li key={pdf.id} className="pdf-list-item" onClick={() => viewPdf(pdf.file_id)} style={{width:'600px'}}>
         <div className='date'>
           Uploaded on: {pdf.date ? new Date(pdf.date).toLocaleString() : 'Date Not Available'}
         </div>
-        <div style={{ color: 'black', display: 'flex',marginLeft:'70px' }}>
-          <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px'}} />
+        <div style={{ color: 'black', display: 'flex',marginLeft:'70px'}}>
+          <FontAwesomeIcon icon={faFilePdf} style={{ marginRight: '5px',color:'red'}} />
           <span>{pdf.file_name}</span>&nbsp;&nbsp;
           <p style={{ color: 'gray', margin: 0, fontWeight: 'lighter' }}>PDF Document</p>
         </div>
       </li>
+      <div>
+      <button onClick={() => handleDelete(pdf.file_id)} style={{marginTop:'80px',marginLeft:'200px'}}>
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+       </div>
+      </div>
+      
     ))}
   </ul>
 </div>

@@ -60,7 +60,7 @@
   
   /* Float the link section to the right */
   .header-right {
-    float: right;
+    float: right
   }
   
   .logout {
@@ -75,4 +75,49 @@
     width: 100%;
     font-size: 1.2rem;
   }
-  
+  /* Header.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black; /* Header background color */
+  padding: 10px 20px;
+  color: #fff; /* Text color */
+  font-size: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: 250px;
+}
+
+.time {
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.logout {
+  background-color: #e74c3c; /* Logout button background color */
+  color: #fff;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #c0392b; /* Logout button background color on hover */
+}

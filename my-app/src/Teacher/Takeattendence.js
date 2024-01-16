@@ -57,7 +57,7 @@ const Takeattendence = () => {
       console.log('Attendance saved successfully:', response.data);
 
       // You can redirect or update the UI as needed
-      alert("Attendence saved ") // Replace with your actual success page path
+      alert("Attendance saved "); // Replace with your actual success page path
     } catch (error) {
       console.error('Error saving attendance:', error);
     }
@@ -67,8 +67,9 @@ const Takeattendence = () => {
     <>
       <Header />
       <TeacherSideBar />
-      <div className="courses-container" style={{ border: '2px solid #ddd', padding: '20px', borderRadius: '8px' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div className="courses-container" style={containerStyle}>
+        <h2 style={titleStyle}>Take Attendance</h2>
+        <table style={tableStyle}>
           <thead>
             <tr>
               <th style={tableHeaderStyle}>ID</th>
@@ -92,12 +93,32 @@ const Takeattendence = () => {
             ))}
           </tbody>
         </table>
-        <button style={{ marginTop: '20px' }} onClick={handleSaveClick}>
+        <button style={saveButtonStyle} onClick={handleSaveClick}>
           Save
         </button>
       </div>
     </>
   );
+};
+
+// Styles
+const containerStyle = {
+  border: '2px solid #ddd',
+  padding: '20px',
+  borderRadius: '8px',
+  marginRight:'60px'
+};
+
+const titleStyle = {
+  fontSize: '28px',
+  marginBottom: '20px',
+  color: '#333',
+};
+
+const tableStyle = {
+  width: '100%',
+  borderCollapse: 'collapse',
+  marginBottom: '20px',
 };
 
 const tableHeaderStyle = {
@@ -107,4 +128,14 @@ const tableHeaderStyle = {
   borderBottom: '1px solid #ddd',
 };
 
+const saveButtonStyle = {
+  marginTop: '20px',
+  width: '100px',
+  height: '40px',
+  backgroundColor: 'green',
+  color: 'white',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+};
 export default Takeattendence;

@@ -25,17 +25,19 @@ const Attendencedetails = () => {
    <>
    <Header/>
    <StudentSideBar/>
-   <h1 className='heading'>Attendence Details</h1>
+   <h1 className="dashboard-title" style={{ '--line-width': '430px',fontSize:'46px' }}>Attendance Details</h1>
    <hr/>
    <div className="courses-container3">
-      {coursesData.map((course, index) => (
-        <div className="course-item" key={index}>
-          {/* Extract date part only using toLocaleDateString() */}
-          <p className={course.is_present =="P"? 'present' : 'not-present'}>
-            {course.is_present === 'P' ? 'Present' : 'Not Present'} | {new Date(course.date).toLocaleDateString()}
-          </p>
-        </div>
-      ))}
+   {coursesData.map((course, index) => (
+  <div className="course-item" key={index}>
+    <div className="course-info">
+      <h3 className={`status ${course.is_present === 'P' ? 'present' : 'not-present'}`}>
+        Status: {course.is_present === 'P' ? 'Present' : 'Not Present'}
+      </h3>
+      <p className="date">Date: {new Date(course.date).toLocaleDateString()}</p>
+    </div>
+  </div>
+))}
     </div>
    </>
   )

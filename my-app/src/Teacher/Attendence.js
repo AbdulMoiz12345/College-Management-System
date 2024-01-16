@@ -16,7 +16,7 @@ const Attendence = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/teacheratt', { tid });
+        const response = await axios.post('http://localhost:8000/get-courses-teacher', { tid });
         setCoursesData(response.data.courses); // Log the state inside useEffect
       } catch (error) {
         console.error('Error fetching data from the backend:', error);
@@ -38,20 +38,21 @@ const Attendence = () => {
     <>
       <Header />
       <TeacherSideBar />
-      <h1 className='heading'>Attendence</h1>
+      <h1 className="dashboard-title" style={{ '--line-width': '280px',fontSize:'46px' }}>Attendence</h1>
     <hr/>
       <div className="courses-container">
         {CoursesData.map(
           (course) =>
             course && (
               <Coursecard
-                key={course.CourseID}
-                id={course.CourseID}
-                ClassID={course.ClassID}
-                name={course.CourseName}
-                description={course.CourseDesc}
-                onClick={() => handleCourseClick(course.CourseID, course.ClassID)}
-              />
+              key={course.CourseID}
+              id={course.CourseID}
+              ClassID={course.ClassID}
+              ClassName={course.ClassName}
+              name={course.CourseName}
+              description={course.CourseDesc}
+              onClick={() => handleCourseClick(course.CourseID, course.ClassID)}
+            />
             )
         )}
       </div>

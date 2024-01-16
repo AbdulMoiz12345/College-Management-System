@@ -14,7 +14,7 @@ import image4 from 'C:/db_project_final/my-app/src/images/4pic.jpeg';
 
 const imagePaths = [image1, image2, image3, image4];
 
-const StudentCoursecard = ({ id,ClassID,name, description, onClick }) => {
+const StudentCoursecard = ({ id,ClassName,ClassID,name, description, onClick }) => {
   const randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
 
   return (
@@ -39,14 +39,14 @@ const StudentCoursecard = ({ id,ClassID,name, description, onClick }) => {
           {name}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {ClassID}
+          {ClassName}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
           {description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color="primary" onClick={onClick}>
+      <Button variant="contained" color="primary" onClick={onClick} style={{backgroundColor: 'green',width:'120px' }}>
           enter
         </Button>
       </CardActions>

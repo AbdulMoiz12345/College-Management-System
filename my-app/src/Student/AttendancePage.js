@@ -22,7 +22,7 @@ const AttendancePage = ({ course_name, class_name, present_days, total_days }) =
               backgroundColor: progressColor, // Set the background color based on the condition
             }}
           >
-            <span>{attendancePercentage.toFixed(2)}%</span>
+            <span >{attendancePercentage.toFixed(2)}%</span>
           </div>
         </div>
         <p>{present_days} days present out of {total_days} total days</p>
